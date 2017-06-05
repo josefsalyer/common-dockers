@@ -3,3 +3,4 @@ java-web-app/app/db2jcc.jar
 java-web-app/app/db2jcc4.jar
 java-web-app/app/jdbc4_LI_en
 java-web-app/app/jdbc_LI_en
+*.hpi
