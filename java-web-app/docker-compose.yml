@@ -2,6 +2,7 @@ version: '3'
 services:
   db:
     image: db2:latest
+    #build: ./db2
     environment:
       LICENSE: accept
       DB2INST1_PASSWORD: thisisthepwd
