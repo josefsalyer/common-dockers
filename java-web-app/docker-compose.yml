@@ -8,8 +8,8 @@ services:
       DB2INST1_PASSWORD: thisisthepwd
     command: db2start
   app:
-    image: java-web-test:latest
-    # build: ./app
+    #image: dcri/liberty-app:latest
+    build: ./app
     environment:
       DB2_PORT: 50000
       DB2_HOST: db

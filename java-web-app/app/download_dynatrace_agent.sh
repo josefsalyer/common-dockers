@@ -11,6 +11,4 @@ wget https://files.dynatrace.com/downloads/OnPrem/dynaTrace/${VERSION}/${VERSION
 java -jar /opt/dynatrace-agent-${VERSION}.${BUILD}-unix.jar -y
 
 # set the java options
-cat << EOF
--agentpath:/opt/dynatrace-6.3/agent/lib64/libdtagent.so=name=${AGENT_GROUP},collector=${COLLECTOR}
-EOF > $OUTFILE
+echo "-agentpath:/opt/dynatrace-6.3/agent/lib64/libdtagent.so=name=${AGENT_GROUP},collector=${COLLECTOR}" > ${OUTFILE}
