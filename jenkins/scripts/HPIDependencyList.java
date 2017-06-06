@@ -3,14 +3,14 @@ import java.util.jar.Attributes;
 import java.util.jar.JarFile;
 import java.util.jar.Manifest;
 
-public class Crap {
+public class HPIDependencyList {
      public static void main(String[] args) throws IOException {
          for (String arg : args) {
-             doZipShit(arg);
+             parseManifestForDependencies(arg);
          }
      }
 
-     private static void doZipShit(String arg) throws IOException {
+     private static void parseManifestForDependencies(String arg) throws IOException {
          String o = new
 JarFile(arg).getManifest().getMainAttributes().getValue("Plugin-Dependencies");
          if (o != null) {
