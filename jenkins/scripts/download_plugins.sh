@@ -49,7 +49,7 @@ while [ "$changed"  == "1" ]; do
     #deps=$( unzip -p ${f} META-INF/MANIFEST.MF | tr -d '\r' | sed -e ':a;N;$!ba;s/\n //g' | grep -e "^Plugin-Dependencies: " | awk '{ print $2 }' | tr ',' '\n' | grep -v "resolution:=optional" | awk -F ':' '{ print $1 }' | tr '\n' ' ' )
     # with optionals
     #deps=$( unzip -p ${f} META-INF/MANIFEST.MF | tr -d '\r' | sed -e ':a;N;$!ba;s/\n //g' | grep -e "^Plugin-Dependencies: " | awk '{ print $2 }' | tr ',' '\n' | awk -F ':' '{ print $1 }' | tr '\n' ' ' )
-    deps=$(java Crap ${f} | tr ',' '\n' | awk -F ':' '{ print $1 }' | tr '\n' ' ')
+    deps=$(java HPIDependencyList ${f} | tr ',' '\n' | awk -F ':' '{ print $1 }' | tr '\n' ' ')
     for plugin in $deps; do
       installPlugin "$plugin" 1 && changed=1
     done

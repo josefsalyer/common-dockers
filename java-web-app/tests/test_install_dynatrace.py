@@ -10,6 +10,7 @@ def test_agent_file_downloaded(host):
   file = host.file(f'/opt/dynatrace-agent-{VERSION}.{BUILD}-unix.jar')
   assert file.exists
 
+@pytest.mark.docker_images("dcri/liberty-app:latest")
 def test_java_options(host):
   file = host.file('/opt/ibm/wlp/usr/servers/defaultServer/jvm.options')
   assert file.exists
