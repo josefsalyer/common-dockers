@@ -8,9 +8,7 @@ if [ $# -eq 0 ]; then
   exit 1
 fi
 
-# plugin_dir=/var/lib/jenkins/plugins
 plugin_dir=../plugins
-file_owner=josefsalyer.staff
 
 mkdir -p ${plugin_dir}
 
@@ -50,13 +48,15 @@ while [ "$changed"  == "1" ]; do
     # with optionals
     #deps=$( unzip -p ${f} META-INF/MANIFEST.MF | tr -d '\r' | sed -e ':a;N;$!ba;s/\n //g' | grep -e "^Plugin-Dependencies: " | awk '{ print $2 }' | tr ',' '\n' | awk -F ':' '{ print $1 }' | tr '\n' ' ' )
     deps=$(java HPIDependencyList ${f} | tr ',' '\n' | awk -F ':' '{ print $1 }' | tr '\n' ' ')
+    echo $deps
+    exit
     for plugin in $deps; do
       installPlugin "$plugin" 1 && changed=1
     done
   done
 done
 
-echo "fixing permissions"
+
 
 # chown ${file_owner} ${plugin_dir} -R
 
