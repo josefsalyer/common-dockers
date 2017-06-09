@@ -1,0 +1,23 @@
+---
+version: '2'
+services:
+  jenkins:
+    image: jenkinsci/jenkins:lts
+    container_name: jenkins
+    restart: always
+    ports:
+      - 8080:8080
+      - 50000:50000
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+    links:
+      - bitbucket
+  bitbucket:
+    image: atlassian/bitbucket-server
+    container_name: bitbucket
+    restart: always
+    ports:
+      - 7990:7990
+      - 7999:7999
+    volumes:
+      - ./bitbucket:/var/atlassian/application-data/bitbucket
